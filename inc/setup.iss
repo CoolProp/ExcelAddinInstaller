@@ -40,7 +40,7 @@ DefaultDirName={userappdata}\Microsoft\AddIns\
 ; the installation in the user's profile. If this were not set,
 ; the uninstall information would be put into the Windows system
 ; folder by InnoSetup.
-UninstallFilesDir={code:GetDestDir}\{#product}\uninstall
+UninstallFilesDir={code:GetDestDir}\CoolProp\uninstall
 
 InternalCompressLevel=max
 SolidCompression=true

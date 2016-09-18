@@ -7,7 +7,7 @@
 #define LONGVERSION "${COOLPROP_VERSION_MAJOR}.${COOLPROP_VERSION_MINOR}.${COOLPROP_VERSION_PATCH}.0" ; The version in four-number format
 #define YEARSPAN "${COOLPROP_COPYRIGHT_YEAR}"         ; The year(s) of publication
                                      ; (e.g., 2014-2015)
-#define PRODUCT "CoolProp Add-in for Excel"
+#define PRODUCT "CoolProp for Excel"
 #define COMPANY "${COOLPROP_PUBLISHER}"
 
 #define SOURCEDIR "source"           ; The folder with the addin files
