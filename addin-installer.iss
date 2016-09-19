@@ -81,6 +81,7 @@ end;
 [Languages]
 Name: English; MessagesFile: compiler:Default.isl; 
 Name: Deutsch; MessagesFile: compiler:Languages\German.isl; 
+Name: Dansk; MessagesFile: compiler:Languages\Danish.isl; 
 #ifexist "languages.iss"
   #include "languages.iss"
 #endif
