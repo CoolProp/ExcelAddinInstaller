@@ -20,3 +20,6 @@ pushd build\installer & cmake ..\.. -DCOOLPROP_EXCEL_MODULE=ON & popd
 
 cmake ..\.. -DCOOLPROP_EXCEL_MODULE=ON -G"Visual Studio 10 Win64"
 cmake --build . --target COOLPROP_EXCEL
+
+cmake ..\CoolProp.win.git -DCOOLPROP_EXCEL_MODULE=ON -G"Visual Studio 10 Win64"
+cmake --build . --target COOLPROP_EXCEL
