@@ -12,13 +12,15 @@
 
 #define SOURCEDIR "source"           ; The folder with the addin files
                                      ; (relative path)
+#define DLLINSDIR "{userappdata}\CoolProp"
+#define EXAMPLDIR "{userdesktop}"
 
 #define LOGFILE "INST-LOG.TXT"       ; The name of the log file. 
 
 AppPublisherURL=http://www.coolprop.org
 AppSupportURL=https://github.com/CoolProp/CoolProp/issues
 AppUpdatesURL=http://www.coolprop.org
-OutputBaseFilename=CoolProp_Excel_v{#VERSION}
+OutputBaseFilename=CoolProp_v{#VERSION}
 OutputDir=deploy
 
 ; If you want to display a license file, uncomment the following

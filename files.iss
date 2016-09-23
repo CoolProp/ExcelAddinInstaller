@@ -9,6 +9,9 @@
 
 ; Example:
 ; Source: {#sourcedir}\myaddin.ini; DestDir: {code:GetDestDir}\
-Source: {#sourcedir}\CoolProp_xls_std.dll; DestDir: {code:GetDestDir}\CoolProp\
-Source: {#sourcedir}\CoolProp_xls_x64.dll; DestDir: {code:GetDestDir}\CoolProp\
-Source: {#sourcedir}\TestExcel.xlsx; DestDir: {code:GetDestDir}\CoolProp\
+Source: {#sourcedir}\CoolProp_xls_std.dll; DestDir: {#DLLINSDIR}\
+Source: {#sourcedir}\CoolProp_xls_x64.dll; DestDir: {#DLLINSDIR}\
+Source: {#sourcedir}\CoolProp_stdcall.dll; DestDir: {#DLLINSDIR}\
+Source: {#sourcedir}\CoolProp_cdecl.dll; DestDir: {#DLLINSDIR}\
+Source: {#sourcedir}\CoolProp_x64.dll; DestDir: {#DLLINSDIR}\
+Source: {#sourcedir}\TestExcel.xlsx; DestDir: {#EXAMPLDIR}\

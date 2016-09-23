@@ -48,7 +48,8 @@ Name: AddDirToPath; Description: {cm:taskAddToPath};
 #endif
 
 [Registry]
-Root: "HKCU"; Subkey: "Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{code:GetDestDir}\CoolProp"; Check: NeedsAddPath('{code:GetDestDir}\CoolProp')
+Root: "HKCU"; Subkey: "Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{#DLLINSDIR}"; Check: NeedsAddPath('{#DLLINSDIR}')
+;Root: "HKCU"; Subkey: "Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{code:GetDestDir}\CoolProp"; Check: NeedsAddPath('{code:GetDestDir}\CoolProp')
 ;http://www.jrsoftware.org/isfaq.php#env
 ;http://stackoverflow.com/questions/3304463/how-do-i-modify-the-path-environment-variable-when-running-an-inno-setup-install
 
