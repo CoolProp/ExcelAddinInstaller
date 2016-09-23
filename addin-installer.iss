@@ -22,6 +22,8 @@
   #include "config.iss"
 #endif
 #include "inc/setup.iss"
+ShowLanguageDialog=no
+ChangesEnvironment=True
 
 [Files]
 ; The include file makes adds all .XLA and .XLAM files contained in the
