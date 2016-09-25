@@ -23,3 +23,10 @@ cmake --build . --target COOLPROP_EXCEL
 
 cmake ..\CoolProp.win.git -DCOOLPROP_EXCEL_MODULE=ON -G"Visual Studio 10 Win64"
 cmake --build . --target COOLPROP_EXCEL
+
+cmake ..\CoolProp.win.git -DCOOLPROP_WINDOWS_PACKAGE=ON -G"Visual Studio 10 Win64"
+cmake --build . --target COOLPROP_WINDOWS_PACKAGE_PREPARE
+cmake --build . --target COOLPROP_WINDOWS_PACKAGE_SHARED_LIBRARIES
+cmake --build . --target COOLPROP_WINDOWS_PACKAGE_EES
+cmake --build . --target COOLPROP_WINDOWS_PACKAGE_EXCEL
+cmake --build . --target COOLPROP_WINDOWS_PACKAGE_INSTALLER

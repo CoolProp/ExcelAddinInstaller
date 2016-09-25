@@ -39,8 +39,16 @@ ChangesEnvironment=True
 ; We make it optional for users to have the addin activated for use in
 ; Excel. In most cases, this will be left enabled by users (everything
 ; else does not make sense).
+;Name: ExcelAddin; Description: {cm:taskExcelAddin}; GroupDescription: "Microsoft Excel"; Components: main
 Name: ActivateAddin; Description: {cm:taskActivate}; 
-Name: AddDirToPath; Description: {cm:taskAddToPath}; 
+Name: AddDirToPath; Description: {cm:taskAddDirToPath}; 
+Name: InstallEES; Description: {cm:taskInstallEES}; 
+
+; Name: desktopicon; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"; Components: main
+; Name: desktopicon\common; Description: "For all users"; GroupDescription: "Additional icons:"; Components: main; Flags: exclusive
+; Name: desktopicon\user; Description: "For the current user only"; GroupDescription: "Additional icons:"; Components: main; Flags: exclusive unchecked
+; Name: quicklaunchicon; Description: "Create a &Quick Launch icon"; GroupDescription: "Additional icons:"; Components: main; Flags: unchecked
+; Name: associate; Description: "&Associate files"; GroupDescription: "Other tasks:"; Flags: unchecked
 
 ; Define any additional tasks in the custom tasks.iss file.
 #ifexist "tasks.iss"
