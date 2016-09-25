@@ -39,10 +39,18 @@ ChangesEnvironment=True
 ; We make it optional for users to have the addin activated for use in
 ; Excel. In most cases, this will be left enabled by users (everything
 ; else does not make sense).
-;Name: ExcelAddin; Description: {cm:taskExcelAddin}; GroupDescription: "Microsoft Excel"; Components: main
-Name: ActivateAddin; Description: {cm:taskActivate}; 
-Name: AddDirToPath; Description: {cm:taskAddDirToPath}; 
-Name: InstallEES; Description: {cm:taskInstallEES}; 
+
+; Name: ActivateAddin; Description: {cm:taskActivate}; 
+; Name: AddDirToPath; Description: {cm:taskAddDirToPath}; 
+; Name: InstallEES; Description: {cm:taskInstallEES}; 
+
+Name: SharedLibs;               Description: {cm:taskSharedLibs};   GroupDescription: "Shared libraries (DLLs)"; 
+Name: SharedLibs\AddDirToPath;  Description: {cm:taskAddDirToPath}; GroupDescription: "Shared libraries (DLLs)"; 
+Name: ExcelAddin;               Description: {cm:taskExcelAddin};   GroupDescription: "Microsoft Excel";
+Name: ExcelAddin\ActivateAddin; Description: {cm:taskActivate};     GroupDescription: "Microsoft Excel";
+; Name: EESwrapper;               Description: {cm:taskEESwrapper}; GroupDescription: "Engineering Equation Solver (EES)"; Components: main
+; Name: MATLABfiles;              Description: {cm:taskMATLABfiles}; GroupDescription: "MATLAB interface"; Components: main
+
 
 ; Name: desktopicon; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"; Components: main
 ; Name: desktopicon\common; Description: "For all users"; GroupDescription: "Additional icons:"; Components: main; Flags: exclusive
