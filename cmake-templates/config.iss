@@ -12,8 +12,11 @@
 
 #define SOURCEDIR "source"           ; The folder with the addin files
                                      ; (relative path)
+
+#define DEFINSDIR "{userappdata}\CoolProp"
 #define DLLINSDIR "{userappdata}\CoolProp"
 #define EXAMPLDIR "{userdesktop}"
+#define EESINSDIR "C:\EES32\Userlib\COOLPROP_EES"
 
 #define LOGFILE "INST-LOG.TXT"       ; The name of the log file. 
 

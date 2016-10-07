@@ -18,22 +18,75 @@
 ; along with this program.	If not, see <http://www.gnu.org/licenses/>.
 
 [Setup]
-#ifexist "config.iss"        
-  #include "config.iss"
-#endif
-#include "inc/setup.iss"
+#include "config.iss"
+
+AppName={#product}
+VersionInfoProductName={#product}
+AppVerName={#product} {#version}
+AppPublisher={#company}
+VersionInfoCompany={#company}
+AppCopyright={#yearspan} {#company}
+VersionInfoCopyright={#yearspan} {#company}
+VersionInfoDescription=custom wrappers and Windows libraries.
+VersionInfoVersion={#longversion}
+VersionInfoProductVersion={#longversion}
+VersionInfoTextVersion={#version}
+
+; Make this setup program work with 32-bit and 64-bit Windows
+ArchitecturesAllowed=x86 x64
+ArchitecturesInstallIn64BitMode=x64
+
+; Always write a log file
+SetupLogging=true
+
+; Addins do not need a program group and no user-configurable
+; installation folder.
+DisableProgramGroupPage=true
+DisableDirPage=true
+CreateAppDir=true
+AppendDefaultDirName=false
+DisableReadyPage=true
+
+; Allow normal users to install the addin into their profile.
+; This directive also ensures that the uninstall information is
+; stored in the user profile rather than a system folder (which
+; would require administrative rights).
+PrivilegesRequired=lowest
+
+; The destination folder is also determined by code since
+; different language versions of Excel expect addins in
+; localized folders.
+DefaultDirName={#DEFINSDIR}
+
+; The uninstall information is to be put into a subfolder of
+; the installation in the user's profile. If this were not set,
+; the uninstall information would be put into the Windows system
+; folder by InnoSetup.
+UninstallFilesDir={#DEFINSDIR}\uninstall
+
+InternalCompressLevel=max
+SolidCompression=true
+
 ShowLanguageDialog=no
 ChangesEnvironment=True
 
 [Files]
-; The include file makes adds all .XLA and .XLAM files contained in the
-; SOURCEDIR to the project.
-#include "inc/files-addins.iss"
+Source: {#sourcedir}\CoolPropLib.h; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
+Source: {#sourcedir}\CoolProp_stdcall.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
+Source: {#sourcedir}\CoolProp_cdecl.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
+Source: {#sourcedir}\CoolProp_x86.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
+Source: {#sourcedir}\CoolProp_x64.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
 
-; Define any additional files in the custom files.iss file.
-#ifexist "files.iss"
-  #include "files.iss"
-#endif
+Source: {#sourcedir}\CoolProp_xls_std.dll; DestDir: {#DLLINSDIR}\ Tasks: ExcelAddin
+Source: {#sourcedir}\CoolProp_xls_x64.dll; DestDir: {#DLLINSDIR}\ Tasks: ExcelAddin
+Source: {#sourcedir}\TestExcel.xlsx; DestDir: {#EXAMPLDIR}\ Tasks: ExcelAddin
+Source: {#sourcedir}\*.xlam; DestDir: {code:GetDestDir}\; Check: ShouldInstallFile(12,16); AfterInstall: ActivateAddin(12,16)
+Source: {#sourcedir}\*.xla; DestDir: {code:GetDestDir}\; Check: ShouldInstallFile(9,11); AfterInstall: ActivateAddin(9,11); Excludes: *.xlam
+
+Source: {#sourcedir}\EES\CoolProp.htm; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
+Source: {#sourcedir}\EES\CoolProp.LIB; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
+Source: {#sourcedir}\EES\COOLPROP_EES.dlf; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
+Source: {#sourcedir}\EES\CoolProp_EES_Sample.EES; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
 
 [Tasks]
 ; We make it optional for users to have the addin activated for use in
@@ -44,10 +97,23 @@ ChangesEnvironment=True
 ; Name: AddDirToPath; Description: {cm:taskAddDirToPath}; 
 ; Name: InstallEES; Description: {cm:taskInstallEES}; 
 
-Name: SharedLibs;               Description: {cm:taskSharedLibs};   GroupDescription: "Shared libraries (DLLs)"; 
-Name: SharedLibs\AddDirToPath;  Description: {cm:taskAddDirToPath}; GroupDescription: "Shared libraries (DLLs)"; 
-Name: ExcelAddin;               Description: {cm:taskExcelAddin};   GroupDescription: "Microsoft Excel";
-Name: ExcelAddin\ActivateAddin; Description: {cm:taskActivate};     GroupDescription: "Microsoft Excel";
+Name: SharedLibs; Description: {cm:taskSharedLibs}; GroupDescription: "CoolProp Library";
+Name: AddToPath;  Description: {cm:taskAddToPath};  GroupDescription: "CoolProp Library"; 
+;Name: SharedLibs\32Bit;     Description: {cm:taskSharedLibs32Bit};     GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
+;Name: SharedLibs\64But;     Description: {cm:taskSharedLibs64Bit};     GroupDescription: "CoolProp Library"; Flags: exclusive 
+
+Name: ExcelAddin;          Description: {cm:taskExcelAddin};         GroupDescription: "Custom wrappers"; Flags: checkablealone
+;Name: ExcelAddin\Example;  Description: {cm:taskExcelAddinExample};  GroupDescription: "Custom wrappers";
+;Name: ExcelAddin\Activate; Description: {cm:taskExcelAddinActivate}; GroupDescription: "Custom wrappers";
+
+Name: EesUserLib;         Description: {cm:taskEesUserLib};        GroupDescription: "Custom wrappers"; Flags: checkablealone
+;Name: EesUserLib\Example; Description: {cm:taskEesUserLibExample}; GroupDescription: "Custom wrappers";
+
+
+; Name: ExcelAddin;               Description: {cm:taskExcelAddin};   GroupDescription: "Microsoft Excel";
+; Name: ExcelAddin\ActivateAddin; Description: {cm:taskActivate};     GroupDescription: "Microsoft Excel";
+; Name: ExcelAddin\ActivateAddin; Description: {cm:taskActivate};     GroupDescription: "Microsoft Excel";
+
 ; Name: EESwrapper;               Description: {cm:taskEESwrapper}; GroupDescription: "Engineering Equation Solver (EES)"; Components: main
 ; Name: MATLABfiles;              Description: {cm:taskMATLABfiles}; GroupDescription: "MATLAB interface"; Components: main
 
@@ -69,48 +135,21 @@ Root: "HKCU"; Subkey: "Environment"; ValueType: expandsz; ValueName: "Path"; Val
 ;http://www.jrsoftware.org/isfaq.php#env
 ;http://stackoverflow.com/questions/3304463/how-do-i-modify-the-path-environment-variable-when-running-an-inno-setup-install
 
+
+; Use the original file and an additional file for custom functions.
 [Code]
 #include "inc/code.iss"
-
-//http://stackoverflow.com/questions/3304463/how-do-i-modify-the-path-environment-variable-when-running-an-inno-setup-install
-function NeedsAddPath(Param: string): boolean;
-var
-  OrigPath: string;
-  ParamExpanded: string;
-begin
-  //expand the setup constants like {app} from Param
-  ParamExpanded := ExpandConstant(Param);
-  //if not RegQueryStringValue(HKEY_LOCAL_MACHINE,'SYSTEM\CurrentControlSet\Control\Session Manager\Environment','Path', OrigPath)
-  if not RegQueryStringValue(HKEY_CURRENT_USER,'Environment','Path', OrigPath)
-  then begin
-    Result := True;
-    exit;
-  end;
-  // look for the path with leading and trailing semicolon and with or without \ ending
-  // Pos() returns 0 if not found
-  Result := Pos(';' + UpperCase(ParamExpanded) + ';', ';' + UpperCase(OrigPath) + ';') = 0;  
-  if Result = True then
-     Result := Pos(';' + UpperCase(ParamExpanded) + '\;', ';' + UpperCase(OrigPath) + ';') = 0;
-  // Disable if not selected
-  if not IsTaskSelected('AddDirToPath') then 
-     Result := False
-end;
+#include "code.iss"
 
 
 [Languages]
 Name: English; MessagesFile: compiler:Default.isl; 
 Name: Deutsch; MessagesFile: compiler:Languages\German.isl; 
 Name: Dansk; MessagesFile: compiler:Languages\Danish.isl; 
-#ifexist "languages.iss"
-  #include "languages.iss"
-#endif
+
 
 [CustomMessages]
-#include "inc/messages.iss"
-
-; Define any additional messages in the custom messages.iss file.
-#ifexist "messages.iss"
-  #include "messages.iss"
-#endif
+; Use a different file to simplify the handling of unicode messages
+#include "messages.iss"
 
 ; vim: set ts=2 sts=2 sw=2 noet tw=60 fo+=lj cms=;%s 
