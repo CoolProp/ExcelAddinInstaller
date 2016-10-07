@@ -1,4 +1,4 @@
-; ExcelAddinInstaller
+﻿; ExcelAddinInstaller
 ; InnoSetup script to install and activate native Excel addins.
 ; Originally developed for Daniel's XL Toolbox (xltoolbox.sf.net).
 ; Requires the InnoSetup Preprocessor (ISPP).
