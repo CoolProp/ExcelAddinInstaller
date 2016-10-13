@@ -98,16 +98,16 @@ Source: {#sourcedir}\EES\CoolProp_EES_Sample.EES; DestDir: {#EESINSDIR}\ Tasks: 
 ; Name: InstallEES; Description: {cm:taskInstallEES}; 
 
 Name: SharedLibs; Description: {cm:taskSharedLibs}; GroupDescription: "CoolProp Library";
-Name: AddToPath;  Description: {cm:taskAddToPath};  GroupDescription: "CoolProp Library"; 
+;Name: AddToPath;  Description: {cm:taskAddToPath};  GroupDescription: "CoolProp Library"; 
 ;Name: SharedLibs\32Bit;     Description: {cm:taskSharedLibs32Bit};     GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
 ;Name: SharedLibs\64But;     Description: {cm:taskSharedLibs64Bit};     GroupDescription: "CoolProp Library"; Flags: exclusive 
 
 Name: ExcelAddin;          Description: {cm:taskExcelAddin};         GroupDescription: "Custom wrappers"; Flags: checkablealone
-;Name: ExcelAddin\Example;  Description: {cm:taskExcelAddinExample};  GroupDescription: "Custom wrappers";
-;Name: ExcelAddin\Activate; Description: {cm:taskExcelAddinActivate}; GroupDescription: "Custom wrappers";
+; Name: ExcelAddin\Example;  Description: {cm:taskExcelAddinExample};  GroupDescription: "Custom wrappers";
+; Name: ExcelAddin\Activate; Description: {cm:taskExcelAddinActivate}; GroupDescription: "Custom wrappers";
 
 Name: EesUserLib;         Description: {cm:taskEesUserLib};        GroupDescription: "Custom wrappers"; Flags: checkablealone
-;Name: EesUserLib\Example; Description: {cm:taskEesUserLibExample}; GroupDescription: "Custom wrappers";
+; Name: EesUserLib\Example; Description: {cm:taskEesUserLibExample}; GroupDescription: "Custom wrappers";
 
 
 ; Name: ExcelAddin;               Description: {cm:taskExcelAddin};   GroupDescription: "Microsoft Excel";

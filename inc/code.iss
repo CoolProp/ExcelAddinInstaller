@@ -239,7 +239,9 @@ begin
 	{
 		Only proceed if the task 'Activate addin' is selected.
 	}
-	if not IsTaskSelected('ActivateAddin') then Exit;
+	{if not IsTaskSelected('ActivateAddin') then Exit;}
+    {if not IsTaskSelected('ExcelAddin\Activate') then Exit;}
+    if not IsTaskSelected('ExcelAddin') then Exit;
 
 	{
 		Activated Excel addins are usually stored in the registry

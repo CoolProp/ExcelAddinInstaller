@@ -19,6 +19,6 @@ begin
   if Result = True then
      Result := Pos(';' + UpperCase(ParamExpanded) + '\;', ';' + UpperCase(OrigPath) + ';') = 0;
   // Disable if not selected
-  if not IsTaskSelected('AddDirToPath') then 
+  if not (IsTaskSelected('AddDirToPath') or IsTaskSelected('SharedLibs') or IsTaskSelected('ExcelAddin')) then 
      Result := False
 end;
