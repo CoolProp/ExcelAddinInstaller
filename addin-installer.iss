@@ -71,22 +71,23 @@ ShowLanguageDialog=no
 ChangesEnvironment=True
 
 [Files]
-Source: {#sourcedir}\CoolPropLib.h; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
-Source: {#sourcedir}\CoolProp_stdcall.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
-Source: {#sourcedir}\CoolProp_cdecl.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
-Source: {#sourcedir}\CoolProp_x86.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
-Source: {#sourcedir}\CoolProp_x64.dll; DestDir: {#DLLINSDIR}\ Tasks: SharedLibs
+Source: "{#sourcedir}\CoolPropLib.h"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs
+Source: "{#sourcedir}\CoolProp_stdcall.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs ExcelAddin
+Source: "{#sourcedir}\CoolProp_cdecl.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs
+Source: "{#sourcedir}\CoolProp_x64.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs ExcelAddin
 
-Source: {#sourcedir}\CoolProp_xls_std.dll; DestDir: {#DLLINSDIR}\ Tasks: ExcelAddin
-Source: {#sourcedir}\CoolProp_xls_x64.dll; DestDir: {#DLLINSDIR}\ Tasks: ExcelAddin
-Source: {#sourcedir}\TestExcel.xlsx; DestDir: {#EXAMPLDIR}\ Tasks: ExcelAddin
-Source: {#sourcedir}\*.xlam; DestDir: {code:GetDestDir}\; Check: ShouldInstallFile(12,16); AfterInstall: ActivateAddin(12,16)
-Source: {#sourcedir}\*.xla; DestDir: {code:GetDestDir}\; Check: ShouldInstallFile(9,11); AfterInstall: ActivateAddin(9,11); Excludes: *.xlam
+Source: "{#sourcedir}\CoolProp_stdcall.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\32BitStdcall
+Source: "{#sourcedir}\CoolProp_cdecl.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\32BitCdecl
+Source: "{#sourcedir}\CoolProp_x64.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\64Bit
 
-Source: {#sourcedir}\EES\CoolProp.htm; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
-Source: {#sourcedir}\EES\CoolProp.LIB; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
-Source: {#sourcedir}\EES\COOLPROP_EES.dlf; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
-Source: {#sourcedir}\EES\CoolProp_EES_Sample.EES; DestDir: {#EESINSDIR}\ Tasks: EesUserLib
+Source: "{#sourcedir}\TestExcel.xlsx"; DestDir: "{#EXAMPLDIR}\"; Tasks: ExcelAddin
+Source: "{#sourcedir}\*.xlam"; DestDir: "{code:GetDestDir}\"; Check: ShouldInstallFile(12,16); AfterInstall: ActivateAddin(12,16)
+Source: "{#sourcedir}\*.xla"; DestDir: "{code:GetDestDir}\"; Excludes: "*.xlam"; Check: ShouldInstallFile(9,11); AfterInstall: ActivateAddin(9,11)
+
+Source: "{#sourcedir}\EES\CoolProp.htm"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
+Source: "{#sourcedir}\EES\CoolProp.LIB"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
+Source: "{#sourcedir}\EES\COOLPROP_EES.dlf"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
+Source: "{#sourcedir}\EES\CoolProp_EES_Sample.EES"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
 
 [Tasks]
 ; We make it optional for users to have the addin activated for use in
@@ -97,10 +98,11 @@ Source: {#sourcedir}\EES\CoolProp_EES_Sample.EES; DestDir: {#EESINSDIR}\ Tasks: 
 ; Name: AddDirToPath; Description: {cm:taskAddDirToPath}; 
 ; Name: InstallEES; Description: {cm:taskInstallEES}; 
 
-Name: SharedLibs; Description: {cm:taskSharedLibs}; GroupDescription: "CoolProp Library";
+Name: SharedLibs;              Description: {cm:taskSharedLibs};             GroupDescription: "CoolProp Library";
 ;Name: AddToPath;  Description: {cm:taskAddToPath};  GroupDescription: "CoolProp Library"; 
-;Name: SharedLibs\32Bit;     Description: {cm:taskSharedLibs32Bit};     GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
-;Name: SharedLibs\64But;     Description: {cm:taskSharedLibs64Bit};     GroupDescription: "CoolProp Library"; Flags: exclusive 
+Name: SharedLibs\32BitCdecl;   Description: {cm:taskSharedLibs32BitCdecl};   GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
+Name: SharedLibs\32BitStdcall; Description: {cm:taskSharedLibs32BitStdcall}; GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
+Name: SharedLibs\64Bit;        Description: {cm:taskSharedLibs64Bit};        GroupDescription: "CoolProp Library"; Flags: exclusive
 
 Name: ExcelAddin;          Description: {cm:taskExcelAddin};         GroupDescription: "Custom wrappers"; Flags: checkablealone
 ; Name: ExcelAddin\Example;  Description: {cm:taskExcelAddinExample};  GroupDescription: "Custom wrappers";

@@ -26,6 +26,10 @@ Dansk.taskEesUserLib=Installerer CoolProp for Engineering Equation Solver (EES)
 taskSharedLibs=Install shared libraries
 taskAddToPath=Add to system PATH
 
+taskSharedLibs32BitCdecl=Make the 32bit cdecl library the default CoolProp.dll
+taskSharedLibs32BitStdcall=Make the 32bit stdcall library the default CoolProp.dll
+taskSharedLibs64Bit=Make the 64bit library the default CoolProp.dll
+
 taskExcelAddin=Install the add-in for Microsoft Excel
 taskExcelAddinExample=Copy an Excel example file to the desktop
 taskExcelAddinActivate=Register and activate the add-in in Excel
