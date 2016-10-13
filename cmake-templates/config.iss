@@ -5,7 +5,7 @@
 
 #define VERSION "${COOLPROP_VERSION_MAJOR}.${COOLPROP_VERSION_MINOR}"                ; The version number
 #define LONGVERSION "${COOLPROP_VERSION_MAJOR}.${COOLPROP_VERSION_MINOR}.${COOLPROP_VERSION_PATCH}.0" ; The version in four-number format
-#define YEARSPAN "${COOLPROP_COPYRIGHT_YEAR}"         ; The year(s) of publication
+#define YEARSPAN "${COOLPROP_YEAR}"         ; The year(s) of publication
                                      ; (e.g., 2014-2015)
 #define PRODUCT "CoolProp for Windows"
 #define COMPANY "${COOLPROP_PUBLISHER}"
