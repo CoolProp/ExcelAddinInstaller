@@ -71,6 +71,8 @@ ShowLanguageDialog=no
 ChangesEnvironment=True
 
 [Files]
+Source: "images\logo.ico"; DestDir: "{#DEFINSDIR}\";
+
 Source: "{#sourcedir}\CoolPropLib.h"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs
 Source: "{#sourcedir}\CoolProp_stdcall.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs ExcelAddin
 Source: "{#sourcedir}\CoolProp_cdecl.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs
@@ -80,14 +82,14 @@ Source: "{#sourcedir}\CoolProp_stdcall.dll"; DestDir: "{#DLLINSDIR}\"; DestName:
 Source: "{#sourcedir}\CoolProp_cdecl.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\32BitCdecl
 Source: "{#sourcedir}\CoolProp_x64.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\64Bit
 
-Source: "{#sourcedir}\TestExcel.xlsx"; DestDir: "{#EXAMPLDIR}\"; Tasks: ExcelAddin
+Source: "{#sourcedir}\TestExcel.xlsx"; DestDir: "{#EXAMPLDIR}\"; Flags: uninsneveruninstall; Tasks: ExcelAddin
 Source: "{#sourcedir}\*.xlam"; DestDir: "{code:GetDestDir}\"; Check: ShouldInstallFile(12,16); AfterInstall: ActivateAddin(12,16)
 Source: "{#sourcedir}\*.xla"; DestDir: "{code:GetDestDir}\"; Excludes: "*.xlam"; Check: ShouldInstallFile(9,11); AfterInstall: ActivateAddin(9,11)
 
 Source: "{#sourcedir}\EES\CoolProp.htm"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
 Source: "{#sourcedir}\EES\CoolProp.LIB"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
 Source: "{#sourcedir}\EES\COOLPROP_EES.dlf"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
-Source: "{#sourcedir}\EES\CoolProp_EES_Sample.EES"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
+Source: "{#sourcedir}\EES\CoolProp_EES_Sample.EES"; DestDir: "{#EXAMPLDIR}\"; Flags: uninsneveruninstall; Tasks: EesUserLib
 
 [Tasks]
 ; We make it optional for users to have the addin activated for use in

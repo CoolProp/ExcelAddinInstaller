@@ -42,7 +42,7 @@ WizardImageBackColor=clWhite
 
 ; The uninstall icon must be included in the setup package
 ; and placed in the output folder.
-UninstallDisplayIcon={app}/logo.ico
+UninstallDisplayIcon={#DEFINSDIR}/logo.ico
 
 ; Specific AppID
 ; Use InnoSetup's Generate UID command from the Tools menu
