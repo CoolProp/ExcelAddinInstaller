@@ -23,7 +23,7 @@
 AppPublisherURL=http://www.coolprop.org
 AppSupportURL=https://github.com/CoolProp/CoolProp/issues
 AppUpdatesURL=http://www.coolprop.org
-OutputBaseFilename=CoolProp_v{#VERSION}
+OutputBaseFilename=CoolProp_v{#LONGVERSION}
 OutputDir=deploy
 
 ; If you want to display a license file, uncomment the following
