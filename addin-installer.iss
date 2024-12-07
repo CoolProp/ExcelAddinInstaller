@@ -33,7 +33,7 @@ VersionInfoProductVersion={#longversion}
 VersionInfoTextVersion={#version}
 
 ; Make this setup program work with 32-bit and 64-bit Windows
-ArchitecturesAllowed=x86 x64
+ArchitecturesAllowed=x86 x64 arm64
 ArchitecturesInstallIn64BitMode=x64
 
 ; Always write a log file
@@ -77,10 +77,12 @@ Source: "{#sourcedir}\CoolPropLib.h"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLib
 Source: "{#sourcedir}\CoolProp_stdcall.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs ExcelAddin
 Source: "{#sourcedir}\CoolProp_cdecl.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs
 Source: "{#sourcedir}\CoolProp_x64.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs ExcelAddin
+Source: "{#sourcedir}\CoolProp_arm64.dll"; DestDir: "{#DLLINSDIR}\"; Tasks: SharedLibs ExcelAddin
 
 Source: "{#sourcedir}\CoolProp_stdcall.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\32BitStdcall
 Source: "{#sourcedir}\CoolProp_cdecl.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\32BitCdecl
-Source: "{#sourcedir}\CoolProp_x64.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\64Bit
+Source: "{#sourcedir}\CoolProp_x64.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\64Bitx86_64
+Source: "{#sourcedir}\CoolProp_arm64.dll"; DestDir: "{#DLLINSDIR}\"; DestName: "CoolProp.dll"; Tasks: SharedLibs\64Bitarm64
 
 Source: "{#sourcedir}\TestExcel.xlsx"; DestDir: "{#EXAMPLDIR}\"; Flags: uninsneveruninstall; Tasks: ExcelAddin
 Source: "{#sourcedir}\*.xlam"; DestDir: "{code:GetDestDir}\"; Check: ShouldInstallFile(12,16); AfterInstall: ActivateAddin(12,16)
@@ -104,7 +106,8 @@ Name: SharedLibs;              Description: {cm:taskSharedLibs};             Gro
 ;Name: AddToPath;  Description: {cm:taskAddToPath};  GroupDescription: "CoolProp Library"; 
 Name: SharedLibs\32BitCdecl;   Description: {cm:taskSharedLibs32BitCdecl};   GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
 Name: SharedLibs\32BitStdcall; Description: {cm:taskSharedLibs32BitStdcall}; GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
-Name: SharedLibs\64Bit;        Description: {cm:taskSharedLibs64Bit};        GroupDescription: "CoolProp Library"; Flags: exclusive
+Name: SharedLibs\64Bitx86_64;        Description: {cm:taskSharedLibs64Bitx86_64};        GroupDescription: "CoolProp Library"; Flags: exclusive 
+Name: SharedLibs\64Bitarm64;        Description: {cm:taskSharedLibs64Bitarm64};        GroupDescription: "CoolProp Library"; Flags: exclusive unchecked
 
 Name: ExcelAddin;          Description: {cm:taskExcelAddin};         GroupDescription: "Custom wrappers"; Flags: checkablealone
 ; Name: ExcelAddin\Example;  Description: {cm:taskExcelAddinExample};  GroupDescription: "Custom wrappers";

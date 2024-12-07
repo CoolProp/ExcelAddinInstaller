@@ -26,7 +26,8 @@ Dansk.ExcelIsRunning=Velkommen til CoolProp!%n%nInstallationsprogrammet har fund
 taskSharedLibs=Install shared libraries
 taskSharedLibs32BitCdecl=Make the 32bit cdecl library the default CoolProp.dll
 taskSharedLibs32BitStdcall=Make the 32bit stdcall library the default CoolProp.dll
-taskSharedLibs64Bit=Make the 64bit library the default CoolProp.dll
+taskSharedLibs64Bitx86_64=Make the 64bit (x86_64 arch) library the default CoolProp.dll
+taskSharedLibs64Bitarm64=Make the 64bit (arm64 arch) library the default CoolProp.dll
 
 taskExcelAddin=Install the add-in for Microsoft Excel
 ;taskExcelAddinExample=Copy an Excel example file to the desktop
@@ -40,7 +41,8 @@ taskEesUserLib=Install CoolProp user library for Engineering Equation Solver (EE
 Deutsch.taskSharedLibs=Install shared libraries
 Deutsch.taskSharedLibs32BitCdecl=Make the 32bit cdecl library the default CoolProp.dll
 Deutsch.taskSharedLibs32BitStdcall=Make the 32bit stdcall library the default CoolProp.dll
-Deutsch.taskSharedLibs64Bit=Make the 64bit library the default CoolProp.dll
+Deutsch.taskSharedLibs64Bitx86_64=Make the 64bit (x86_64 arch) library the default CoolProp.dll
+Deutsch.taskSharedLibs64Bitarm64=Make the 64bit (arm64 arch) library the default CoolProp.dll
 
 Deutsch.taskExcelAddin=Add-in für Microsoft Excel installieren
 ;Deutsch.taskExcelAddinExample=Copy an Excel example file to the desktop
