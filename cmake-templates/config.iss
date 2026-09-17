@@ -16,7 +16,10 @@
 #define DEFINSDIR "{userappdata}\CoolProp"
 #define DLLINSDIR "{userappdata}\CoolProp"
 #define EXAMPLDIR "{userdesktop}"
+; The 32-bit EES keeps its user libraries in Userlib, the 64-bit EES
+; (EES64.exe) in Userlib64.  The EES32 folder name is historical.
 #define EESINSDIR "C:\EES32\Userlib\COOLPROP_EES"
+#define EESINSDIR64 "C:\EES64\Userlib64\COOLPROP_EES"
 
 #define LOGFILE "INST-LOG.TXT"       ; The name of the log file. 
 

@@ -88,10 +88,18 @@ Source: "{#sourcedir}\TestExcel.xlsx"; DestDir: "{#EXAMPLDIR}\"; Flags: uninsnev
 Source: "{#sourcedir}\*.xlam"; DestDir: "{code:GetDestDir}\"; Check: ShouldInstallFile(12,16); AfterInstall: ActivateAddin(12,16)
 Source: "{#sourcedir}\*.xla"; DestDir: "{code:GetDestDir}\"; Excludes: "*.xlam"; Check: ShouldInstallFile(9,11); AfterInstall: ActivateAddin(9,11)
 
+; The 32-bit EES loads .dlf and .LIB files from its Userlib folder, the 64-bit
+; EES (EES64.exe) loads .dlf64 and .LIB64 files from Userlib64.  Neither can
+; read the library of the other bitness, so both are offered separately.
 Source: "{#sourcedir}\EES\CoolProp.htm"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
 Source: "{#sourcedir}\EES\CoolProp.LIB"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
 Source: "{#sourcedir}\EES\COOLPROP_EES.dlf"; DestDir: "{#EESINSDIR}\"; Tasks: EesUserLib
 Source: "{#sourcedir}\EES\CoolProp_EES_Sample.EES"; DestDir: "{#EXAMPLDIR}\"; Flags: uninsneveruninstall; Tasks: EesUserLib
+
+Source: "{#sourcedir}\EES64\CoolProp.htm"; DestDir: "{#EESINSDIR64}\"; Tasks: EesUserLib64
+Source: "{#sourcedir}\EES64\CoolProp.LIB64"; DestDir: "{#EESINSDIR64}\"; Tasks: EesUserLib64
+Source: "{#sourcedir}\EES64\COOLPROP_EES.dlf64"; DestDir: "{#EESINSDIR64}\"; Tasks: EesUserLib64
+Source: "{#sourcedir}\EES64\CoolProp_EES_Sample.EES"; DestDir: "{#EXAMPLDIR}\"; Flags: uninsneveruninstall; Tasks: EesUserLib64
 
 [Tasks]
 ; We make it optional for users to have the addin activated for use in
@@ -114,6 +122,7 @@ Name: ExcelAddin;          Description: {cm:taskExcelAddin};         GroupDescri
 ; Name: ExcelAddin\Activate; Description: {cm:taskExcelAddinActivate}; GroupDescription: "Custom wrappers";
 
 Name: EesUserLib;         Description: {cm:taskEesUserLib};        GroupDescription: "Custom wrappers"; Flags: checkablealone
+Name: EesUserLib64;       Description: {cm:taskEesUserLib64};      GroupDescription: "Custom wrappers"; Flags: checkablealone
 ; Name: EesUserLib\Example; Description: {cm:taskEesUserLibExample}; GroupDescription: "Custom wrappers";
 
 

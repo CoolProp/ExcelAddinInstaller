@@ -33,7 +33,8 @@ taskExcelAddin=Install the add-in for Microsoft Excel
 ;taskExcelAddinExample=Copy an Excel example file to the desktop
 ;taskExcelAddinActivate=Register and activate the add-in in Excel
 
-taskEesUserLib=Install CoolProp user library for Engineering Equation Solver (EES)
+taskEesUserLib=Install CoolProp user library for the 32-bit Engineering Equation Solver (EES.exe)
+taskEesUserLib64=Install CoolProp user library for the 64-bit Engineering Equation Solver (EES64.exe)
 ;taskEesUserLibExample=Copy an EES example file to the desktop
 
 
@@ -48,7 +49,8 @@ Deutsch.taskExcelAddin=Add-in für Microsoft Excel installieren
 ;Deutsch.taskExcelAddinExample=Copy an Excel example file to the desktop
 ;Deutsch.taskExcelAddinActivate=Register and activate the add-in in Excel
 
-Deutsch.taskEesUserLib=CoolProp für Engineering Equation Solver (EES) installieren
+Deutsch.taskEesUserLib=CoolProp für den 32-Bit Engineering Equation Solver (EES.exe) installieren
+Deutsch.taskEesUserLib64=CoolProp für den 64-Bit Engineering Equation Solver (EES64.exe) installieren
 ;Deutsch.taskEesUserLibExample=Copy an EES example file to the desktop
 
 
@@ -62,5 +64,6 @@ Dansk.taskExcelAddin=Installerer CoolProp for Microsoft Excel
 ;Dansk.taskExcelAddinExample=Copy an Excel example file to the desktop
 ;Dansk.taskExcelAddinActivate=Register and activate the add-in in Excel
 
-Dansk.taskEesUserLib=Installerer CoolProp for Engineering Equation Solver (EES)
+Dansk.taskEesUserLib=Installerer CoolProp for 32-bit Engineering Equation Solver (EES.exe)
+Dansk.taskEesUserLib64=Installerer CoolProp for 64-bit Engineering Equation Solver (EES64.exe)
 ;Dansk.taskEesUserLibExample=Copy an EES example file to the desktop
